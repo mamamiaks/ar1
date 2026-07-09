@@ -1,0 +1,119 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>1. Marker-Based AR</title>
+    <!-- Menggunakan library A-Frame dan AR.js versi stabil -->
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar.js"></script>
+  </head>
+  <body style="margin: 0px; overflow: hidden">
+    <a-scene
+      embedded
+      arjs="sourceType: webcam; debugUIEnabled: false;"
+      vr-mode-ui="enabled: false"
+    >
+      <!-- ============================================
+           BAGIAN 1.1 & 1.2: Hiro Marker + a-text (Nama & NIM)
+           ============================================ -->
+      <a-marker preset="hiro">
+        <!-- Kubus emas berputar -->
+        <a-box
+          position="0 0.5 0"
+          material="color: #FFD700; roughness: 0.3;"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 4000; easing: linear"
+        >
+        </a-box>
+
+        <!-- Teks informasi (Tanda kurung siku dihapus agar lebih bersih) -->
+        <a-text
+          value="NAMA: Rois Abdul Fatah\nNIM: 41155050240006"
+          color="#000"
+          align="center"
+          position="0 1.3 0"
+          scale="1.2 1.2 1.2"
+        >
+        </a-text>
+      </a-marker>
+
+      <!-- ============================================
+           BAGIAN 1.3: Custom Marker (Karakter Chibi)
+           Mendefinisikan aset gambar chibi terlebih dahulu
+           ============================================ -->
+      <a-assets timeout="10000">
+        <img id="gambar-chibi-1" src="./ar1.jpeg" />
+        <img id="gambar-chibi-2" src="./ar2.jpeg" />
+        <img id="gambar-chibi-3" src="./ar3.jpeg" />
+      </a-assets>
+
+      <!-- Chibi 1 (Yuanitha Nasya Arthanti) - Menggunakan pattern-ar1.patt & gambar-chibi-1 -->
+      <a-marker preset = "kanji">
+        <a-box
+          src="#gambar-chibi-1"
+          position="0 0.5 0"
+          depth="1"
+          height="1"
+          width="1"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 6000; easing: linear"
+        >
+        </a-box>
+
+        <a-text
+          value="Yuanitha Nasya Arthanti\n41155050240016"
+          color="#000"
+          align="center"
+          position="0 1.2 0"
+          scale="1 1 1"
+        >
+        </a-text>
+      </a-marker>
+
+      <!-- Chibi 2 (Ailsya Foza Safiera) - Menggunakan pattern-ar2.patt & gambar-chibi-2 -->
+      <a-marker type="pattern" url="./pattern-ar2.patt">
+        <a-box
+          src="#gambar-chibi-2"
+          position="0 0.5 0"
+          depth="1"
+          height="1"
+          width="1"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 6000; easing: linear"
+        >
+        </a-box>
+
+        <a-text
+          value="Ailsya Foza Safiera\n41155050240004"
+          color="#000"
+          align="center"
+          position="0 1.2 0"
+          scale="1 1 1"
+        >
+        </a-text>
+      </a-marker>
+
+      <!-- Chibi 3 (Ardiyanti Daffa M) - Menggunakan pattern-ar3.patt & gambar-chibi-3 -->
+      <a-marker type="pattern" url="./pattern-ar3.patt">
+        <a-box
+          src="#gambar-chibi-3"
+          position="0 0.5 0"
+          depth="1"
+          height="1"
+          width="1"
+          animation="property: rotation; to: 0 360 0; loop: true; dur: 6000; easing: linear"
+        >
+        </a-box>
+
+        <a-text
+          value="Ardiyanti Daffa M\n41155050240022"
+          color="#000"
+          align="center"
+          position="0 1.2 0"
+          scale="1 1 1"
+        >
+        </a-text>
+      </a-marker>
+
+      <!-- Kamera AR -->
+      
+    </a-scene>
+  </body>
+</html>
